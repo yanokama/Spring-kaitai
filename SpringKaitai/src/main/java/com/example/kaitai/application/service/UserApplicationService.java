@@ -1,4 +1,4 @@
-package com.example.kaitai.applicationservice;
+package com.example.kaitai.application.service;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
