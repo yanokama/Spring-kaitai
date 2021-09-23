@@ -4,6 +4,18 @@
 
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.kaitai.repository.UserMapper">
+
+<!-- マッピング定義（ユーザー） -->
+<resultMap type="com.example.kaitai.domain.user.model.MUser" id="user">
+	<id column="user_id" property="userId"/>
+	<result column="password" property="password"/>
+	<result column="user_name" property="userName"/>
+	<result column="birthday" property="birthday"/>
+	<result column="age" property="age"/>
+	<result column="gender" property="gender"/>
+	<result column="department_id" property="departmentId"/>
+	<result column="role" property="role"/>
+</resultMap>
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
 		insert into m_user(
@@ -27,4 +39,22 @@
 			,#{role}
 		)
 	</insert>
+	
+	<!-- ユーザ複数県取得 -->
+	<select id="findMany" resultType="MUser">
+		select
+			*
+		from
+			m_user
+	</select>
+	
+	<!-- ユーザー1件検索 -->
+	<select id="findOne" resultMap="user">
+		select
+			*
+		from
+			m_user
+		where
+			user_id = #{userId}
+	</select>
 </mapper>
