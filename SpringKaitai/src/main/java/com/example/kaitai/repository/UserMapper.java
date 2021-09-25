@@ -3,6 +3,7 @@ package com.example.kaitai.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.kaitai.domain.user.model.MUser;
 
@@ -13,8 +14,17 @@ public interface UserMapper {
 	public int insertOne(MUser user);
 	
 	/**ユーザー取得*/
-	public List<MUser> findMany();
+	public List<MUser> findMany(MUser user);
 	
 	/**ユーザー取得 */
 	public MUser findOne(String userId);
+
+	/**ユーザー更新 */
+	public void updateOne(@Param("userId") String userId,
+			@Param("password") String password,
+			@Param("userName") String userName);
+	
+	/**ユーザー削除（1件）*/
+	public int deleteOne(@Param("userId") String userId);
+	
 }
