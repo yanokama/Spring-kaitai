@@ -1,6 +1,7 @@
 package com.example.kaitai.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import com.example.kaitai.domain.user.service.UserService;
 import com.example.kaitai.form.GroupOrder;
 import com.example.kaitai.form.SignupForm;
 import com.example.kaitai.form.UserDetailForm;
+import com.example.kaitai.form.UserListForm;
 
 @RestController
 @RequestMapping("/user")
@@ -32,6 +35,17 @@ public class UserRestController {
 	private ModelMapper modelMapper;
 	@Autowired
 	private MessageSource messageSource;
+	
+	/**ユーザーを検索*/
+	@GetMapping("/get/list")
+	public List<MUser> getUserList(UserListForm form){
+		//formをMUserクラスに変換
+		MUser user = modelMapper.map(form,  MUser.class);
+		
+		//ユーザー一覧
+		List<MUser> userList = userService.getUsers(user);
+		return userList;
+	}
 	
 	/**ユーザーを登録*/
 	@PostMapping("/signup/rest")

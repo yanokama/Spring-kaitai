@@ -111,6 +111,13 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+		<!-- datatables -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>datatables-plugins</artifactId>
+			<version>1.10.21</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
