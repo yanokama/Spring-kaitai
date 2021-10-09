@@ -10,7 +10,7 @@ jQuery(function($){
 	});
 	
 	/**削除ボタンを押したときの処理 */
-	$('btn-delete').click(function (event){
+	$('#btn-delete').click(function (event){
 		//ユーザー削除
 		deleteUser();
 	});
