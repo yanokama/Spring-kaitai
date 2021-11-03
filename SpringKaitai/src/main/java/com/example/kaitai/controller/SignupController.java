@@ -57,7 +57,6 @@ public class SignupController {
 	public String postSignup(Model model, Locale locale,
 		@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
 		BindingResult bindingResult) {
-		log.info(form.toString());//バグ調査用＠＠＠
 		
 		//入力チェック結果
 		if(bindingResult.hasErrors()) {
